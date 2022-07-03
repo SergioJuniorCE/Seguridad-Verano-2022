@@ -1,21 +1,32 @@
 <script lang="ts">
 	import { supabase } from '$lib/database';
+		import { goto } from '$app/navigation';
 
 	let email: string;
 	let password: string;
 
 	async function handleRegister() {
-		const { user: userDetails, error } = await supabase.auth.signUp({
+		const { user, error } = await supabase.auth.signUp({
 			email,
 			password
 		});
+		if (error) {
+			alert(error);
+			return;
+		}
+		goto('encrypt');
 	}
 
 	async function handleLogin() {
-		const { user: userDetails, error } = await supabase.auth.signIn({
+		const { user, error } = await supabase.auth.signIn({
 			email,
 			password
 		});
+		if (error) {
+			alert(error);
+			return;
+		}
+		goto('encrypt');
 	}
 </script>
 

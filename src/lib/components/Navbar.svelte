@@ -2,19 +2,11 @@
 	import { onMount } from 'svelte';
 	import { supabase } from '$lib/database';
 	import { session } from '$app/stores';
-
-	let user: any = null;
-
-	onMount(async () => {
-		if ($session) {
-			if ($session.hasOwnProperty('user')) {
-				user = $session['user'];
-			}
-		}
-	});
+	import { goto } from '$app/navigation';
 
 	async function signOut() {
 		const { error } = await supabase.auth.signOut();
+		goto('/');
 	}
 </script>
 
