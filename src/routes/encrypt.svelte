@@ -1,5 +1,5 @@
 <script lang="ts">
-	import EncryptionTextarea from '$lib/components/EncryptionTextarea.svelte';
+	import EncryptionForm from '$lib/components/EncryptionForm.svelte';
 
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
@@ -13,5 +13,5 @@
 </script>
 
 {#if $session}
-	<EncryptionTextarea />
+	<EncryptionForm />
 {/if}

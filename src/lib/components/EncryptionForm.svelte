@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { decrypt, encrypt } from '$lib/encryption';
+	import { capitalize } from '$lib/utils';
 
 	let text: string;
-	let transformedText: string;
+	let transformedText: string | '';
 
 	let toggle: string = 'encrypt';
 
@@ -11,12 +12,19 @@
 		handleCrypt();
 	}
 
-	function handleCrypt() {
-		if (toggle == 'encrypt') {
-			transformedText = encrypt(text);
-		} else if (toggle == 'decrypt') {
-			transformedText = decrypt(text);
+	function handleCrypt(e?: any) {
+		if (e && e.charCode == 13) {
+			if (toggle == 'encrypt') {
+				transformedText = encrypt(text);
+			} else if (toggle == 'decrypt') {
+				transformedText = decrypt(text);
+			}
 		}
+	}
+
+	function handleCopy() {
+		navigator.clipboard.writeText(transformedText);
+		alert('Copied the text: ' + transformedText);
 	}
 </script>
 
@@ -56,6 +64,15 @@
 	/>
 </div>
 <div class="mb-3">
-	<label for="" class="form-label">{toggle}ed text</label>
-	<textarea class="form-control" name="" id="" rows="3" bind:value={transformedText} />
+	<label for="" class="form-label">{capitalize(toggle)}ed text</label>
+	<textarea
+		disabled
+		class="form-control"
+		id="transformedText"
+		rows="3"
+		bind:value={transformedText}
+	/>
+</div>
+<div class="d-grid gap-2">
+	<button type="button" class="btn btn-primary" on:click={handleCopy}>Copy to clipboard</button>
 </div>
