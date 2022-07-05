@@ -37,6 +37,7 @@
 		"@supabase/supabase-js": "^1.35.4",
 		"bootstrap": "^5.2.0-beta1",
 		"cookie": "^0.4.1",
-		"crypto-js": "^4.1.1"
+		"crypto-js": "^4.1.1",
+		"sweetalert2": "^11.4.19"
 	}
 }

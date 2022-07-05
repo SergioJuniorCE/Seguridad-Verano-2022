@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { supabase } from '$lib/database';
-		import { goto } from '$app/navigation';
+	import { goto } from '$app/navigation';
+	import Swal from 'sweetalert2';
 
 	let email: string;
 	let password: string;
@@ -11,7 +12,7 @@
 			password
 		});
 		if (error) {
-			alert(error);
+			handleError(error.message);
 			return;
 		}
 		goto('encrypt');
@@ -23,10 +24,18 @@
 			password
 		});
 		if (error) {
-			alert(error);
+			handleError(error.message);
 			return;
 		}
 		goto('encrypt');
+	}
+
+	function handleError(message: string) {
+		Swal.fire({
+			icon: 'error',
+			title: 'Something went wrong!',
+			text: message
+		});
 	}
 </script>
 
