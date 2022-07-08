@@ -44,7 +44,7 @@
 		<div class="mb-3">
 			<label for="email" class="form-label">Email address</label>
 			<input
-				type="text"
+				type="email"
 				class="form-control"
 				name="email"
 				id="email"

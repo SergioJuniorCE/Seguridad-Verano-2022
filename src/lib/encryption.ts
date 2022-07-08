@@ -17,8 +17,6 @@ export function encrypt(data: string): string {
 }
 
 export function decrypt(data: string): string {
-	let result: string;
-
 	if (data == '' || data == undefined) {
 		return '';
 	}
