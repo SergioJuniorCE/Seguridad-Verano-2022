@@ -23,8 +23,12 @@
 	}
 
 	function handleCopy() {
-		navigator.clipboard.writeText(transformedText);
-		alert('Copied the text: ' + transformedText);
+		if (transformedText) {
+			navigator.clipboard.writeText(transformedText);
+			alert('Copied the text: ' + transformedText);
+		} else {
+			alert("There's no text to copy.");
+		}
 	}
 </script>
 
