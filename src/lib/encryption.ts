@@ -8,7 +8,7 @@ export function encrypt(data: string): string {
 		if (data == '' || data == undefined) {
 			return '';
 		} else {
-			result = CryptoJS.DES.encrypt(data, key).toString();
+			result = CryptoJS.AES.encrypt(data, key).toString();
 		}
 	} catch (error) {
 		return '';
@@ -22,7 +22,7 @@ export function decrypt(data: string): string {
 	}
 
 	try {
-		const bytes = CryptoJS.DES.decrypt(data, key);
+		const bytes = CryptoJS.AES.decrypt(data, key);
 		return bytes.toString(CryptoJS.enc.Utf8);
 	} catch (error) {
 		return '';
